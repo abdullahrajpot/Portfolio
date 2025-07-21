@@ -24,7 +24,7 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className="fixed top-4 left-0 w-full z-50 flex justify-center pointer-events-none"
+      className="fixed top-4 left-0 w-full z-50 flex justify-center pointer-events-auto"
     >
       <div className="max-w-7xl w-[96%] mx-auto px-4 py-3 flex items-center justify-between rounded-2xl shadow-lg bg-gradient-to-r from-cyan-900/80 via-gray-900/80 to-gray-800/80 border border-cyan-900 pointer-events-auto">
         {/* Logo */}

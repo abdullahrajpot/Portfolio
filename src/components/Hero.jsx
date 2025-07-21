@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="w-full min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-2"
+      className="w-full min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-2 sm: mt-12"
     >
       <Particles
         id="tsparticles"
@@ -49,7 +49,7 @@ export default function Hero() {
   initial={{ x: -80, opacity: 0 }}
   animate={{ x: 0, opacity: 1 }}
   transition={{ duration: 0.8 }}
-  className="flex-shrink-0 flex items-center justify-center w-full md:w-auto ml-7"
+  className="flex-shrink-0 flex items-center justify-center w-full md:w-auto ml-7 "
 >
   <img
     src={img}
@@ -74,7 +74,7 @@ export default function Hero() {
             </span>
           </h1>
           <h2 className="text-2xl md:text-3xl mb-4 text-cyan-300 font-semibold">
-            UI/UX Designer & Full-Stack Developer
+            Software Engineer & Full-Stack Developer
           </h2>
           <p className="max-w-2xl text-gray-300 mb-6">
             I am Abdullah Tariq, a passionate Full-Stack MERN Developer, Web & App Developer, and UI/UX designer.
