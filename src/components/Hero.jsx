@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FaDownload } from 'react-icons/fa';
 import img from '../assets/myPic.jpg';
 
@@ -30,6 +30,35 @@ export default function Hero() {
     detectRetina: true,
   };
 
+  // Typewriter effect logic
+  const titles = ['Software Engineer', 'Full-Stack Developer'];
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [typing, setTyping] = useState(true);
+
+  useEffect(() => {
+    let timeout;
+    if (typing) {
+      if (displayed.length < titles[titleIndex].length) {
+        timeout = setTimeout(() => {
+          setDisplayed(titles[titleIndex].slice(0, displayed.length + 1));
+        }, 80);
+      } else {
+        timeout = setTimeout(() => setTyping(false), 1200); // Pause before erasing
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1));
+        }, 40);
+      } else {
+        setTyping(true);
+        setTitleIndex((prev) => (prev + 1) % titles.length);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, typing, titleIndex, titles]);
+
   return (
     <section
       id="home"
@@ -43,22 +72,20 @@ export default function Hero() {
       />
 
       <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-center md:justify-between px-4 md:px-16 py-12 gap-10 md:gap-0">
-        
         {/* Profile Image with Hover Animation */}
-       <motion.div
-  initial={{ x: -80, opacity: 0 }}
-  animate={{ x: 0, opacity: 1 }}
-  transition={{ duration: 0.8 }}
-  className="flex-shrink-0 flex items-center justify-center w-full md:w-auto ml-7 "
->
-  <img
-    src={img}
-    alt="Profile"
-    className="rounded-full w-64 h-64 border-4 border-cyan-400 shadow-lg object-cover bg-black 
+        <motion.div
+          initial={{ x: -80, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="flex-shrink-0 flex items-center justify-center w-full md:w-auto ml-7 "
+        >
+          <img
+            src={img}
+            alt="Profile"
+            className="rounded-full w-74 h-74 border-4 border-cyan-400 shadow-lg object-cover bg-black \
                transform transition duration-500 hover:scale-105 hover:rotate-2 hover:shadow-cyan-400/50"
-  />
-</motion.div>
-
+          />
+        </motion.div>
 
         {/* Text Content */}
         <motion.div
@@ -73,24 +100,39 @@ export default function Hero() {
               Abdullah Tariq
             </span>
           </h1>
-          <h2 className="text-2xl md:text-3xl mb-4 text-cyan-300 font-semibold">
-            Software Engineer & Full-Stack Developer
-          </h2>
+          {/* Typewriter Animated Title */}
+          <div className="min-h-[3.5rem] md:min-h-[4.5rem]">
+            <span
+              className="block text-2xl md:text-5xl font-extrabold text-cyan-300"
+              style={{ letterSpacing: '1px', fontFamily: 'monospace' }}
+            >
+              {displayed}
+              <span className="animate-pulse">|</span>
+            </span>
+          </div>
           <p className="max-w-2xl text-gray-300 mb-6">
             I am Abdullah Tariq, a passionate Full-Stack MERN Developer, Web & App Developer, and UI/UX designer.
             I thrive on building scalable web applications and exploring the latest technologies.
           </p>
 
-          {/* Resume Button with Glow & Icon */}
-          <a
-            href="/Abdullah CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-2 border-2 border-cyan-400 text-white rounded shadow hover:bg-cyan-600 hover:border-cyan-600 hover:shadow-cyan-500/50 transition text-lg font-semibold"
-          >
-            <FaDownload className="text-white" />
-            View My Resume
-          </a>
+          {/* Resume and Contact Buttons */}
+          <div className="flex gap-4">
+            <a
+              href="/Abdullah CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-2 border-2 border-cyan-400 text-white rounded shadow hover:bg-cyan-600 hover:border-cyan-600 hover:shadow-cyan-500/50 transition text-lg font-semibold"
+            >
+              <FaDownload className="text-white" />
+              View My Resume
+            </a>
+            <a
+              href="#Contact"
+              className="flex items-center gap-2 px-6 py-2 border-2 border-cyan-400 text-white rounded shadow hover:bg-cyan-600 hover:border-cyan-600 hover:shadow-cyan-500/50 transition text-lg font-semibold"
+            >
+              Let's Connect
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

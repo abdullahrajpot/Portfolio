@@ -5,6 +5,7 @@ import About from './components/About';
 import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import Achievements from './components/Achievements';
+import ContactMe from './components/ContactMe';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <TechStack/>
       <Projects/>
       <Achievements/>
+      <ContactMe/>
     </>
   );
 }

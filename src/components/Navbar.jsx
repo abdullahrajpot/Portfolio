@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const handleNavClick = (name) => {
     setActive(name);
-    setMenuOpen(false);
+    setMenuOpen(false);    
   };
 
   return (
