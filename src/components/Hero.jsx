@@ -118,7 +118,7 @@ export default function Hero() {
           {/* Resume and Contact Buttons */}
           <div className="flex gap-4">
             <a
-              href="/Abdullah CV.pdf"
+              href="/Abdullah CV (updated).pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-2 border-2 border-cyan-400 text-white rounded shadow hover:bg-cyan-600 hover:border-cyan-600 hover:shadow-cyan-500/50 transition text-lg font-semibold"
