@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  .group:hover {
+    transform: none !important;
+  }
+  
+  .group:active {
+    transform: scale(0.98) !important;
+  }
+  
+  /* Ensure buttons are always visible on mobile */
+  .group .opacity-100 {
+    opacity: 1 !important;
+  }
+  
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on mobile */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+}
+
+/* Prevent text selection on touch */
+.touch-manipulation {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Better scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
